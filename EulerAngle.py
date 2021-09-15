@@ -23,8 +23,9 @@ def Z(theta):
                          [0, 0, 1]])
 
 def main():
-    start = timeit.default_timer()
+    start = timeit.default_timer()          #Start timer for run time
 
+    #Generate random angles
     phi = math.pi / randint(1, 100)
     theta = math.pi / randint(1, 100)
     psi = math.pi / randint(1, 100)
@@ -33,10 +34,10 @@ def main():
     print("theta = ", theta)
     print("psi = ", psi)
 
-    R = X(phi) * Y(theta) * Z(theta)
-    stop = timeit.default_timer()
+    R = X(phi) * Y(theta) * Z(theta)       #Calculate rotation matrix
+    stop = timeit.default_timer()          #Stop timer for run time
 
-    print("\n", numpy.round(R, decimals = 2))
-    print("\nTime: ", stop - start)
+    print("\n", numpy.round(R, decimals = 2))   #Print rotation matrix
+    print("\nTime: ", stop - start)             #Print run time
 
 main()
