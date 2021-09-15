@@ -1,3 +1,5 @@
+#https://personal.utdallas.edu/~sxb027100/dock/quaternion.html
+
 import math as m
 import numpy
 import timeit
@@ -16,6 +18,7 @@ def qv_multiply(q1, v1):
     return q_multiply(q_multiply(q1, q2), q_conjugate(q1))[1:]
 
 #Multiply two quaternions for rotation and to get a rotation matrix
+
 def q_multiply():
     s1, a1, b1, c1 = q1
     s2, a2, b2, c2 = q2
