@@ -9,51 +9,12 @@ from prettytable import PrettyTable
 from EulerAngle import X, Y, Z
 from Quaternions import euler_to_quaternion
 
-ITERATIONS = 200
+ITERATIONS = 100
 
 # importing pandas library
 import pandas as pd
 # import matplotlib library
 import matplotlib.pyplot as plt
-
-'''
-def label_array():
-    array = []
-    i = 0
-    while i<=ITERATIONS:
-        array.append(i)
-
-    return array
-
-
-def graph(labels, eTime, qTime):
-    xaxisLabels = labels
-
-    eData = eTime
-    qData = qTime
-
-
-    x = np.arrange(len(labels))
-    width = 0.2
-
-    fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width/2, eTime, width, label='Euler Time')
-    rects2 = ax.bar(x + width/2, qTime, width, label='Quaternion Time')
-
-    # Add some text for labels, title and custom x-axis tick labels, etc.
-    ax.set_ylabel('Compute Time')
-    ax.set_title('Scores by group and gender')
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels)
-    ax.legend()
-
-    ax.bar_label(rects1, padding=3)
-    ax.bar_label(rects2, padding=3)
-
-    fig.tight_layout()
-
-    plt.show()
-'''
 
 
 def main():
@@ -120,7 +81,7 @@ def main():
     #print(dfTable)
 
     # plotting graph
-    dfGraph.plot(x="Iteration", y=["Euler Time", "Quaternion Time"], kind="bar", width = 1)
+    dfGraph.plot.bar(x="Iteration", y=["Euler Time", "Quaternion Time"], stacked = True, width = 1)
 
     plt.show()
 
