@@ -11,7 +11,7 @@ from Quaternions import euler_to_quaternion
 def main():
     final = []
 
-    headers = ["Euler Rotation Matrix", "Time for Euler", "Time for Quaternion", "Quaternion Result"]
+    headers = ["phi", "theta", "psi", "Euler Rotation Matrix", "Time for Euler", "Time for Quaternion", "Quaternion Result"]
     table = PrettyTable(headers)
 
     i = 0
@@ -20,13 +20,13 @@ def main():
         startEuler = timeit.default_timer()          #Start timer for euler caluclation run time
 
         #Generate random angles
-        phi = math.pi / randint(1, 100)
-        theta = math.pi / randint(1, 100)
-        psi = math.pi / randint(1, 100)
+        phi = math.pi / randint(1, 6)
+        theta = math.pi / randint(1, 6)
+        psi = math.pi / randint(1, 6)
 
-        print("phi = ", phi)
-        print("theta = ", theta)
-        print("psi = ", psi)
+        #print("phi = ", phi)
+        #print("theta = ", theta)
+        #print("psi = ", psi)
 
         euler = X(phi) * Y(theta) * Z(theta)       #Calculate rotation matrix
         stopEuler = timeit.default_timer()         #Stop timer for euler calculation run time
@@ -42,9 +42,9 @@ def main():
         #print("\n", numpy.round(quaternion, decimals = 2))      #Print rotation matrix
         #print("\nTime: ", stopQuaternion - startQuaternion)     #Print run time
 
-        add = table.add_row([euler, stopEuler - startEuler, stopQuaternion - startQuaternion, quaternion])  #Add information to table
+        add = table.add_row([phi, theta, psi, numpy.round(euler, decimals = 2), stopEuler - startEuler, stopQuaternion - startQuaternion, numpy.round(quaternion, decimals  = 2)])  #Add information to table
 
-        result = [euler, stopEuler - startEuler, stopQuaternion - startQuaternion, quaternion]              #Add information to first array
+        result = [phi, theta, psi, euler, stopEuler - startEuler, stopQuaternion - startQuaternion, quaternion]              #Add information to first array
 
         final.append(result)            #Append first array to final array
 

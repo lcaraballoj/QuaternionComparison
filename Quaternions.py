@@ -46,7 +46,7 @@ def euler_to_quaternion(phi, theta, psi):
 
         return [qw, qx, qy, qz]
 
-
+'''
 def main():
     i = 0
     while i < 5:
@@ -68,5 +68,6 @@ def main():
         print("\nTime: ", stop - start)             #Print run time
 
         i += 1
+'''
 
-main()
+#main()

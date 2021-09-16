@@ -22,6 +22,7 @@ def Z(theta):
                          [math.sin(theta), -math.cos(theta), 0],
                          [0, 0, 1]])
 
+'''
 def main():
     i = 0
     while i<=5:
@@ -43,6 +44,6 @@ def main():
         print("\nTime: ", stop - start, "\n")             #Print run time
 
         i += 1
+'''
 
-
-main()
+#main()
