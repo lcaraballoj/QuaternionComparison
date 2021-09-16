@@ -1,2 +1,2 @@
-# QuaternionComparison
-Code to compare the calculation times of 3D rotation between matrices, Euler angles, and quaternions.
+# Quaternion Comparison
+This is part of a math research project on quaternions. It's purpose is to compare the compute times using various different methods for the rotation of 3D objects given three random angles.
