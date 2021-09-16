@@ -1,39 +1,61 @@
 import numpy
 import math
 import timeit
+import pandas as pd
 
 from random import *
+from prettytable import PrettyTable
 from EulerAngle import X, Y, Z
 from Quaternions import euler_to_quaternion
 
 def main():
-        i = 0
-        while i<=5:
-            startEuler = timeit.default_timer()          #Start timer for run time
+    final = []
 
-            #Generate random angles
-            phi = math.pi / randint(1, 100)
-            theta = math.pi / randint(1, 100)
-            psi = math.pi / randint(1, 100)
+    headers = ["Euler Rotation Matrix", "Time for Euler", "Time for Quaternion", "Quaternion Result"]
+    table = PrettyTable(headers)
 
-            print("phi = ", phi)
-            print("theta = ", theta)
-            print("psi = ", psi)
+    i = 0
 
-            euler = X(phi) * Y(theta) * Z(theta)       #Calculate rotation matrix
-            stopEuler = timeit.default_timer()          #Stop timer for run time
+    while i<=15:
+        startEuler = timeit.default_timer()          #Start timer for euler caluclation run time
 
-            print("\n", numpy.round(euler, decimals = 2))   #Print rotation matrix
-            print("\nTime: ", stopEuler - startEuler, "\n")             #Print run time
+        #Generate random angles
+        phi = math.pi / randint(1, 100)
+        theta = math.pi / randint(1, 100)
+        psi = math.pi / randint(1, 100)
 
-            startQuaternion = timeit.default_timer()
+        print("phi = ", phi)
+        print("theta = ", theta)
+        print("psi = ", psi)
 
-            quaternion = euler_to_quaternion(phi, theta, psi)
-            stopQuaternion = timeit.default_timer()          #Stop timer for run time
+        euler = X(phi) * Y(theta) * Z(theta)       #Calculate rotation matrix
+        stopEuler = timeit.default_timer()         #Stop timer for euler calculation run time
 
-            print("\n", numpy.round(quaternion, decimals = 2))   #Print rotation matrix
-            print("\nTime: ", stopQuaternion - startQuaternion)             #Print run time
+        print("\n", numpy.round(euler, decimals = 2))       #Print rotation matrix
+        print("\nTime: ", stopEuler - startEuler, "\n")     #Print run time
 
-            i += 1
+        startQuaternion = timeit.default_timer()
+
+        quaternion = euler_to_quaternion(phi, theta, psi)
+        stopQuaternion = timeit.default_timer()             #Stop timer for run time
+
+        print("\n", numpy.round(quaternion, decimals = 2))      #Print rotation matrix
+        print("\nTime: ", stopQuaternion - startQuaternion)     #Print run time
+
+        add = table.add_row([euler, stopEuler - startEuler, stopQuaternion - startQuaternion, quaternion])  #Add information to table
+
+        result = [euler, stopEuler - startEuler, stopQuaternion - startQuaternion, quaternion]              #Add information to first array
+
+        final.append(result)            #Append first array to final array
+
+        i += 1
+
+    print(table)
+
+    dictionary = dict(zip(headers, zip(*final)))    #Convert final array to a dictionary
+
+    df = pd.DataFrame.from_dict(dictionary)                            #Define the dataframes
+    df.to_csv("Comparison.csv", index = False, header =  True)         #Write dataframes to csv to be saved
+
 
 main()
