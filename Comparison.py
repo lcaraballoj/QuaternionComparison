@@ -16,7 +16,7 @@ def main():
 
     i = 0
 
-    while i<=15:
+    while i<=100:
         startEuler = timeit.default_timer()          #Start timer for euler caluclation run time
 
         #Generate random angles
@@ -31,16 +31,16 @@ def main():
         euler = X(phi) * Y(theta) * Z(theta)       #Calculate rotation matrix
         stopEuler = timeit.default_timer()         #Stop timer for euler calculation run time
 
-        print("\n", numpy.round(euler, decimals = 2))       #Print rotation matrix
-        print("\nTime: ", stopEuler - startEuler, "\n")     #Print run time
+        #print("\n", numpy.round(euler, decimals = 2))       #Print rotation matrix
+        #print("\nTime: ", stopEuler - startEuler, "\n")     #Print run time
 
         startQuaternion = timeit.default_timer()
 
         quaternion = euler_to_quaternion(phi, theta, psi)
         stopQuaternion = timeit.default_timer()             #Stop timer for run time
 
-        print("\n", numpy.round(quaternion, decimals = 2))      #Print rotation matrix
-        print("\nTime: ", stopQuaternion - startQuaternion)     #Print run time
+        #print("\n", numpy.round(quaternion, decimals = 2))      #Print rotation matrix
+        #print("\nTime: ", stopQuaternion - startQuaternion)     #Print run time
 
         add = table.add_row([euler, stopEuler - startEuler, stopQuaternion - startQuaternion, quaternion])  #Add information to table
 
@@ -56,6 +56,5 @@ def main():
 
     df = pd.DataFrame.from_dict(dictionary)                            #Define the dataframes
     df.to_csv("Comparison.csv", index = False, header =  True)         #Write dataframes to csv to be saved
-
 
 main()
