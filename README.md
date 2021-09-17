@@ -8,6 +8,7 @@ This is part of a math research project on quaternions. It's purpose is to compa
 4. [Resources](#resources)
 
 # Introduction
+The goal of this project is to be able to compute the 
 
 # Understanding the Math
 
