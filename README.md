@@ -15,6 +15,7 @@ The goal of this project is to be able to compare the compute time of various ma
 # Understanding the Code
 
 # The Why
+The goal is prove that quaternions are a more efficient way to compute the rotation of 3D objects. It is a supplementary addition to a research paper on quaternions and a way to collect original data. Quaternions are widely used and are preferred over Euler angles becuase of the speed of computing them, the size, only four scalars vs. the nine in matrix multiplication, and the fact that using quaternions does not result in something called gimbal lock. To have hard data that shows the compute time of quaternions is superior is beneficial for visualizing why we would want to go through the trouble of understanding the complexities of quaternions. 
 
 # Resources
 [Computing Euler Angles](https://www.meccanismocomplesso.org/en/3d-rotations-and-euler-angles-in-python/) <br>
