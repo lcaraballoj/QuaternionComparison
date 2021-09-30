@@ -10,7 +10,7 @@ from EulerAngle import X, Y, Z
 from Quaternions import euler_to_quaternion
 from Graphs import graphAll, graphAvg
 
-ITERATIONS = 1000
+ITERATIONS = 50
 
 def main():
     final = []
