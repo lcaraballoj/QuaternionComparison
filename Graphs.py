@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 # Function to graph all data
 def graphAll(time):
+
     labels = ["Iteration", "Euler Time", "Quaternion Time"]     # Creating the labels
 
     eQTimeDict = dict(zip(labels, zip(*time)))                  # Create dictionary
@@ -11,7 +12,11 @@ def graphAll(time):
     df = pd.DataFrame.from_dict(eQTimeDict)                # Use dictionary to create dataframes
 
     # Plotting graph
-    df.plot.bar(x="Iteration", y=["Euler Time", "Quaternion Time"], width=1)
+    graph = df.plot.bar(x="Iteration", y=["Euler Time", "Quaternion Time"], width=1, title="Rotation Matrix vs. Quaternion Compute Time")
+    graph.set_title("Rotation Matrix vs. Quaternion Compute Time", fontdict={'fontsize':18})
+    graph.set_ylabel("Compute Time", fontdict={'fontsize':18})
+    graph.set_xlabel("Iteration", fontdict={'fontsize':18})
+    graph.legend(fontsize=18)
 
     # Return the figure
     return plt.figure(1)
@@ -46,7 +51,7 @@ def graphAvg(eTime, qTime):
     ax.set_ylabel("Computation Time")
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels)
-    ax.set_title("Computation Comparison")
+    ax.set_title("Average Computation Comparison")
     ax.yaxis.grid(True)
 
     # Return the figure
