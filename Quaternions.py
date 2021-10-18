@@ -1,50 +1,82 @@
 #https://personal.utdallas.edu/~sxb027100/dock/quaternion.html
 
 import math as m
-import numpy
+import numpy as np
 import timeit
+from sympy import sin, cos, pi
 
 from random import *
+
+from UnitVector import unitVector, magnitude
 
 #To calculate quaternion multiple the quaternion by a vector by the conjugate
 
 #Calculate the conjugate
 def conjugate(q):
-    s, a, b, c = q
-    return(s, -a, -b, -c)
+    q[1] = - q[1]
+    q[2] = -q[2]
+    q[3] = -q[3]
 
-def qv_multiply(q1, v1):
-    q2 = (0.0) + v1     #A pure quaternion is purely the vector part
-    return q_multiply(q_multiply(q1, q2), q_conjugate(q1))[1:]
+    print ("Conjugate: ", q)
+    return q
 
-#Multiply two quaternions for rotation and to get a rotation matrix
+def quaternion(uVector, theta):
+    u = unitVector(uVector, magnitude(uVector))
 
-def q_multiply():
-    s1, a1, b1, c1 = q1
-    s2, a2, b2, c2 = q2
+    print("Unit Vector: ", u)
 
-    #Calculation for different components
-    s = (s1*s2 - a1*a2 - b1*b2 - c1*c2)
-    a = (s1*a2 + a1*s2 + b1*c2 - c1*b2)
-    b = (s1*b2 - a1*c2 + b1*s2 + c1*a2)
-    c = (s1*c2 + a1*b2 - b1*a2 + c1*s2)
+    q = cos(theta/2) + (sin(theta/2) * uVector)
 
-    return s, a, b, c
+    print("Quaternion: ", q)
 
-#Multiply all components together to get result
-def main():
-    q = q_multiply(q_multiply(q1, q2), q_conjugate(q1))[1:]
+    return u
 
-    print(q)
+def quaternionMultiplication(q1, q2):
+    product = []
+    product.append(q1[0]*q2[0] - q1[1]*q2[1] - q1[2]*q2[2] - q1[3]*q2[3])
+    product.append(q1[0]*q2[1] + q1[1]*q2[0] + q1[2]*q2[3] - q1[3]*q2[2])
+    product.append(q1[0]*q2[2] + q1[2]*q2[0] + q1[3]*q2[1] - q1[1]*q2[3])
+    product.append(q1[0]*q2[3] + q1[3]*q2[0] + q1[1]*q2[2] - q1[2]*q2[1])
+
+    return product
+
+def quaternionRotation(vector, uVector, theta):
+    q = quaternion(uVector, theta)
+    print ("Quaternion: ", q)
+    rotation = quaternionMultiplication(q, vector)
+    print (rotation)
+    rotation = quaternionMultiplication(rotation, conjugate(q))
+
+    return rotation
+
 
 def euler_to_quaternion(phi, theta, psi):
 
-        qw = m.cos(phi/2) * m.cos(theta/2) * m.cos(psi/2) + m.sin(phi/2) * m.sin(theta/2) * m.sin(psi/2)
-        qx = m.sin(phi/2) * m.cos(theta/2) * m.cos(psi/2) - m.cos(phi/2) * m.sin(theta/2) * m.sin(psi/2)
-        qy = m.cos(phi/2) * m.sin(theta/2) * m.cos(psi/2) + m.sin(phi/2) * m.cos(theta/2) * m.sin(psi/2)
-        qz = m.cos(phi/2) * m.cos(theta/2) * m.sin(psi/2) - m.sin(phi/2) * m.sin(theta/2) * m.cos(psi/2)
+        qw = cos(phi/2) * cos(theta/2) * cos(psi/2) + sin(phi/2) * sin(theta/2) * sin(psi/2)
+        qx = sin(phi/2) * cos(theta/2) * cos(psi/2) - cos(phi/2) * sin(theta/2) * sin(psi/2)
+        qy = cos(phi/2) * sin(theta/2) * cos(psi/2) + sin(phi/2) * cos(theta/2) * sin(psi/2)
+        qz = cos(phi/2) * cos(theta/2) * sin(psi/2) - sin(phi/2) * sin(theta/2) * cos(psi/2)
 
         return [qw, qx, qy, qz]
+
+
+def mult():
+    q1 = np.array([0, 0, 1, 0])
+    q2 = np.array([0, 1, 0, 0])
+
+    print(quaternionMultiplication(q1, q2))
+
+#mult()
+
+def main():
+    theta = (pi)
+    print("Theta: ", theta)
+    vector = np.array([0, 0, 1, 0])
+    uVector = np.array([0, 1, 0, 0])
+
+    print(quaternionRotation(vector, uVector, theta))
+
+main()
 
 '''
 def main():

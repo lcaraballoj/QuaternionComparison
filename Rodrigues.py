@@ -13,12 +13,12 @@ def rodriguesFormula(listU, listV, theta):
 
     return rotation
 
-def main():
-    listU = [(3/(5 * math.sqrt(2))), ((2* math.sqrt(2))/5), (-1 / math.sqrt(2))]
-    listV = [2, 3, -1]
-
-    theta = (math.pi / 3)
-
-    print(rodriguesFormula(listU, listV, theta))
-
-main()
+# def main():
+#     listU = [(3/(5 * math.sqrt(2))), ((2* math.sqrt(2))/5), (-1 / math.sqrt(2))]
+#     listV = [2, 3, -1]
+#
+#     theta = (math.pi / 3)
+#
+#     print(rodriguesFormula(listU, listV, theta))
+#
+# main()
