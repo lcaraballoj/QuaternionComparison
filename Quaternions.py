@@ -37,17 +37,17 @@ def quaternion(uVector, theta):
 # Follow the rules to multiply quaternions (general formulation from using relations for i, j, k)
 def quaternionMultiplication(q1, q2):
     product = []    # Create list to convert to array/vector
-    product.append(q1[0]*q2[0] - q1[1]*q2[1] - q1[2]*q2[2] - q1[3]*q2[3])
-    product.append(q1[0]*q2[1] + q1[1]*q2[0] + q1[2]*q2[3] - q1[3]*q2[2])
-    product.append(q1[0]*q2[2] + q1[2]*q2[0] + q1[3]*q2[1] - q1[1]*q2[3])
-    product.append(q1[0]*q2[3] + q1[3]*q2[0] + q1[1]*q2[2] - q1[2]*q2[1])
+    product.append(q1[0]*q2[0] - q1[1]*q2[1] - q1[2]*q2[2] - q1[3]*q2[3])       # s
+    product.append(q1[0]*q2[1] + q1[1]*q2[0] + q1[2]*q2[3] - q1[3]*q2[2])       # i
+    product.append(q1[0]*q2[2] + q1[2]*q2[0] + q1[3]*q2[1] - q1[1]*q2[3])       # j
+    product.append(q1[0]*q2[3] + q1[3]*q2[0] + q1[1]*q2[2] - q1[2]*q2[1])       # k
 
-    return np.array(product)    # Return the vector
+    return np.array(product)    # Return the quaternion (s, ai, bj, ck)
 
 # Function to caluclate the rotarion quaternion given two vectors and an angle
 def quaternionRotation(vector, uVector, theta):
     q = quaternion(uVector, theta)      # Find the quaternion
-    print ("Quaternion: ", q)   # Print the quaternion(debug)
+    print ("Quaternion: ", q)           # Print the quaternion(debug)
     rotation = quaternionMultiplication(quaternionMultiplication(q, vector), conjugate(q))  # Caluclate the quaternion that represents the rotation
 
     return rotation     # Retuarn rotation quaternion
@@ -62,10 +62,10 @@ def euler_to_quaternion(phi, theta, psi):
         return [qw, qx, qy, qz] # Combine s, i, j, k to obtain quaternion
 
 def main():
-    theta = pi/4
+    theta = pi/3
     #print("Theta: ", theta)
-    vector = np.array([0, 1, 0, 0])
-    uVector = np.array([0, 0.0, 1, 0.0])
+    vector = np.array([0, 1, -1, 2])
+    uVector = np.array([0, 0, 1/2, sqrt(3)/2])
 
     print("Answer: ", simplify(quaternionRotation(vector, uVector, theta)))
 
