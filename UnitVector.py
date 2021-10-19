@@ -22,10 +22,12 @@ def unitVector(vector, magnitude):
     return(numpy.array(unitList))
 
 # def main():
-#     list = [0, 1, 1, 1]
-#     array = np.array(list)
+#     theta = (sympy.pi/3)
+#     list = [0, 0, (1/2), (sympy.sqrt(3)/2)]
+#     array = numpy.array(list)
 #
-#     print(unitVector(array, magnitude(array)))
+#     u = unitVector(array, magnitude(array))
+#     print("Quaternion: ", quaternion(u, theta))
 #
 #
 # main()

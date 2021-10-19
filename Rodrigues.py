@@ -4,10 +4,7 @@ import math
 from random import *
 from UnitVector import unitVector
 
-def rodriguesFormula(listU, listV, theta):
-
-    vecU = numpy.array(listU)
-    vecV = numpy.array(listV)
+def rodriguesFormula(vecU, vecV, theta):
 
     rotation = (1 - math.cos(theta)) * numpy.dot(vecU, vecV) * vecU + (math.cos(theta) * vecV) + (math.sin(theta) * numpy.cross(vecU, vecV))
 

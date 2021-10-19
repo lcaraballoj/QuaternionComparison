@@ -2,7 +2,7 @@
 
 import numpy as np
 import timeit
-from sympy import sin, cos, pi
+from sympy import sin, cos, pi, sqrt, simplify
 
 from random import *
 
@@ -10,6 +10,7 @@ from UnitVector import unitVector, magnitude
 
 # Calculates the conjugate
 def conjugate(q):
+    q[0] = q[0]
     q[1] = - q[1]
     q[2] = -q[2]
     q[3] = -q[3]
@@ -23,11 +24,15 @@ def quaternion(uVector, theta):
 
     #print("Unit Vector: ", u)       # Print the unit vector (debugging)
 
-    q = cos(theta/2) + (sin(theta/2) * uVector)     # Obtain the quaternion
+    angle = theta/2
 
-    #print("Quaternion: ", q)
+    q = [cos(angle)]      # Obtain the scalar part of the quaternion
 
-    return q    # Return the quaternion calculated
+    for x in range (1, uVector.size):           # Append values for vector
+        value = uVector[x] * sin(angle)         # For each value in the unit vector multiply it my sin(angle), where angle = (theta/2)
+        q.append(value)                         # Append value to quaternion
+
+    return (np.array(q))    # Return the quaternion calculated
 
 # Follow the rules to multiply quaternions (general formulation from using relations for i, j, k)
 def quaternionMultiplication(q1, q2):
@@ -42,7 +47,7 @@ def quaternionMultiplication(q1, q2):
 # Function to caluclate the rotarion quaternion given two vectors and an angle
 def quaternionRotation(vector, uVector, theta):
     q = quaternion(uVector, theta)      # Find the quaternion
-    #print ("Quaternion: ", q)   # Print the quaternion(debug)
+    print ("Quaternion: ", q)   # Print the quaternion(debug)
     rotation = quaternionMultiplication(quaternionMultiplication(q, vector), conjugate(q))  # Caluclate the quaternion that represents the rotation
 
     return rotation     # Retuarn rotation quaternion
@@ -56,13 +61,12 @@ def euler_to_quaternion(phi, theta, psi):
 
         return [qw, qx, qy, qz] # Combine s, i, j, k to obtain quaternion
 
-
 def main():
-    theta = (pi)
+    theta = pi/4
     #print("Theta: ", theta)
-    vector = np.array([0, 0, 1, 0])
-    uVector = np.array([0, 1, 0, 0])
+    vector = np.array([0, 1, 0, 0])
+    uVector = np.array([0, 0.0, 1, 0.0])
 
-    print(quaternionRotation(vector, uVector, theta))
+    print("Answer: ", simplify(quaternionRotation(vector, uVector, theta)))
 
 main()
