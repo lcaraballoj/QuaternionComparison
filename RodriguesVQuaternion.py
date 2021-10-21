@@ -4,7 +4,6 @@ import math
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# from sympy import *
 from random import *
 from prettytable import PrettyTable
 from Rodrigues import rodriguesFormula

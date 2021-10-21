@@ -2,14 +2,14 @@ import numpy
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Function to graph all data
-def graphAll(time):
+# Function to graph all data for Euler and quaternions
+def graphAllEulerQuaternions(time):
 
     labels = ["Iteration", "Euler Time", "Quaternion Time"]     # Creating the labels
 
     eQTimeDict = dict(zip(labels, zip(*time)))                  # Create dictionary
 
-    df = pd.DataFrame.from_dict(eQTimeDict)                # Use dictionary to create dataframes
+    df = pd.DataFrame.from_dict(eQTimeDict)                     # Use dictionary to create dataframes
 
     # Plotting graph
     graph = df.plot.bar(x="Iteration", y=["Euler Time", "Quaternion Time"], width=1, title="Rotation Matrix vs. Quaternion Compute Time")
@@ -21,8 +21,8 @@ def graphAll(time):
     # Return the figure
     return plt.figure(1)
 
-# Function to graph average times
-def graphAvg(eTime, qTime):
+# Function to graph average times for Euler and quaternions
+def graphAvgEulerQuaternions(eTime, qTime):
     # Getting averages of compute time for euler and quaternion
     eAvg = numpy.average(eTime)
     qAvg = numpy.average(qTime)
@@ -48,17 +48,17 @@ def graphAvg(eTime, qTime):
        alpha=0.5,
        ecolor='black',
        capsize=10)
-    ax.set_ylabel("Computation Time")
+    ax.set_ylabel("Computation Time")       # Labels for y-axis
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels)
-    ax.set_title("Average Computation Comparison")
+    ax.set_title("Average Compute Time: Rotation Matrix vs. Quaternions")      # Title
     ax.yaxis.grid(True)
 
     # Return the figure
     return plt.figure(2)
 
 
-# Function to graph all data
+# Function to graph all data for Rodrigues and quatenrions
 def graphAllRodriguesQuaternions(time):
 
     labels = ["Iteration", "Rodrigues Time", "Quaternion Time"]     # Creating the labels
@@ -68,7 +68,7 @@ def graphAllRodriguesQuaternions(time):
     df = pd.DataFrame.from_dict(eQTimeDict)                # Use dictionary to create dataframes
 
     # Plotting graph
-    graph = df.plot.bar(x="Iteration", y=["Rodrigues Time", "Quaternion Time"], width=1, title="Rotation Matrix vs. Quaternion Compute Time")
+    graph = df.plot.bar(x="Iteration", y=["Rodrigues Time", "Quaternion Time"], width=1, title="Rodrigues' Rotation Formula vs. Quaternion Compute Time")
     graph.set_title("Rodrigues Rotation vs. Quaternion Compute Time", fontdict={'fontsize':18})
     graph.set_ylabel("Compute Time", fontdict={'fontsize':18})
     graph.set_xlabel("Iteration", fontdict={'fontsize':18})
@@ -77,7 +77,7 @@ def graphAllRodriguesQuaternions(time):
     # Return the figure
     return plt.figure(1)
 
-# Function to graph average times
+# Function to graph average times for Rodrigues and quaternions
 def graphAvgRodriguesQuaternions(rTime, qTime):
     # Getting averages of compute time for euler and quaternion
     rAvg = numpy.average(rTime)
@@ -91,7 +91,7 @@ def graphAvgRodriguesQuaternions(rTime, qTime):
     q = [min(qTime), max(qTime)]
 
     # Define labels, x_pos, values, error
-    labels = ["Rodrigues Average Time", "Quaternion Average Time"]
+    labels = ["Rodrigues Average Time", "Quaternion Average Time"]      # Labels for bars
     x_pos = numpy.arange(len(labels))
     values = [rAvg, qAvg]
     error = [rStd, qStd]
@@ -104,10 +104,10 @@ def graphAvgRodriguesQuaternions(rTime, qTime):
        alpha=0.5,
        ecolor='black',
        capsize=10)
-    ax.set_ylabel("Computation Time")
+    ax.set_ylabel("Computation Time")       # Label for y-axis
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels)
-    ax.set_title("Average Computation Comparison")
+    ax.set_title("Average Compute Time: Rodrigues vs. Quaternions")  # Title
     ax.yaxis.grid(True)
 
     # Return the figure

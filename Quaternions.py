@@ -67,13 +67,3 @@ def euler_to_quaternion(phi, theta, psi):
         qz = math.cos(phi/2) * math.cos(theta/2) * math.sin(psi/2) - math.sin(phi/2) * math.sin(theta/2) * math.cos(psi/2)    # Calculate k
 
         return [qw, qx, qy, qz] # Combine s, i, j, k to obtain quaternion
-
-# def main():
-#     theta = pi/3
-#     #print("Theta: ", theta)
-#     vector = np.array([0, 1, -1, 2])
-#     uVector = np.array([0, 0, 1/2, sqrt(3)/2])
-#
-#     print("Answer: ", simplify(quaternionRotation(vector, uVector, theta)))
-#
-# main()

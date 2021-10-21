@@ -4,25 +4,24 @@ import timeit
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# from sympy import *
 from random import *
 from prettytable import PrettyTable
 from EulerAngle import X, Y, Z
 from Quaternions import euler_to_quaternion
 from Graphs import graphAll, graphAvg
 
-ITERATIONS = 10
+ITERATIONS = 20
 
 def main():
     final = []
     time = []
 
-    headers = ["phi", "theta", "psi", "Euler Rotation Matrix", "Time for Euler", "Time for Quaternion", "Quaternion Result"]
-    table = PrettyTable(headers)
+    headers = ["phi", "theta", "psi", "Euler Rotation Matrix", "Time for Euler", "Time for Quaternion", "Quaternion Result"]    # Headers for table
+    table = PrettyTable(headers)        # Genearte table
 
-    i = 0
+    i = 0       # Initialize iteration
 
-    while i<=ITERATIONS:
+    while i<=ITERATIONS:                             # Loop (depends on ITERATIONS constant at top)
         startEuler = timeit.default_timer()          # Start timer for euler caluclation run time
 
         #Generate random angles
@@ -30,24 +29,14 @@ def main():
         theta = math.pi / randint(1, 6)
         psi = math.pi / randint(1, 6)
 
-        #print("phi = ", phi)
-        #print("theta = ", theta)
-        #print("psi = ", psi)
-
         euler = X(phi) * Y(theta) * Z(theta)       # Calculate rotation matrix
         stopEuler = timeit.default_timer()         # Stop timer for euler calculation run time
-
-        #print("\n", numpy.round(euler, decimals = 2))       # Print rotation matrix
-        #print("\nTime: ", stopEuler - startEuler, "\n")     # Print run time
 
         startQuaternion = timeit.default_timer()
 
         quaternion = euler_to_quaternion(phi, theta, psi)
 
         stopQuaternion = timeit.default_timer()             # Stop timer for run time
-
-        #print("\n", numpy.round(quaternion, decimals = 2))      # Print rotation matrix
-        #print("\nTime: ", stopQuaternion - startQuaternion)     # Print run time
 
         add = table.add_row([phi, theta, psi, numpy.round(euler, decimals = 2), stopEuler - startEuler, stopQuaternion - startQuaternion, numpy.round(quaternion, decimals  = 2)])  #Add information to table
 
