@@ -24,9 +24,9 @@ The code has five main parts: `EulerAngle.py`, `Rodrigues.py`, `Quaternions.py`,
 
 - `EulerAngle.py` is used to compute the rotation matrix given three random Euler angles.
    - This includes:
-      1.  Finding the 3x3 matrix for the x-axis: `X`
-      2.  Finding the 3x3 matrix for the y-axis: `Y`
-      3.  Finding the 3x3 matrix for the z-axis: `Z`
+      1.  Finding the 3x3 matrix for the x-axis: `X()`
+      2.  Finding the 3x3 matrix for the y-axis: `Y()`
+      3.  Finding the 3x3 matrix for the z-axis: `Z()`
 - `Rodrigues.py` is used to compute Rodrigue's rotation formula given two random vectors, with one being turned into a unit vector with `UnitVector.py` and a random angle. 
   - This includes:
       1. Finding the vector using Rodrigues rotation formula: `rodrigues_formula()`
@@ -42,7 +42,10 @@ The code has five main parts: `EulerAngle.py`, `Rodrigues.py`, `Quaternions.py`,
  - `EulerVQuaternion.py` takes all functions from `EulerAngle.py` and `euler_to_quaternion()` from `Quaternions.py` and compares their compute times when given the same three random angles. Will then generate two graphs: one displaying and comparing the compute times for all iterations and one displaying and comparing the average compute time over the iterations as well as a table using [prettytable](https://pypi.org/project/prettytable/). 
  - `RodriguesVQuaternion.py` takes all functions from `Rodrigues.py` and `quaternion_rotation()` from `Quaternions.py` and compares their compute times when given the same three random angles. Will then generate two graphs: one displaying and comparing the compute times for all iterations and one displaying and comparing the average compute time over the iterations as well as a table using [prettytable](https://pypi.org/project/prettytable/).
  - `Graphs.py` generates the graphs using [matplot](https://matplotlib.org/) and [pandas](https://pandas.pydata.org/). 
+ - `UnitVector.py` finds the unit vector
 
 # Resources
-[Computing Euler Angles](https://www.meccanismocomplesso.org/en/3d-rotations-and-euler-angles-in-python/) <br>
-[Computing Quaternions](https://www.meccanismocomplesso.org/en/hamiltons-quaternions-and-3d-rotation-with-python/)
+- [Computing Euler Angles](https://www.meccanismocomplesso.org/en/3d-rotations-and-euler-angles-in-python/)
+- [Computing Quaternions](https://www.meccanismocomplesso.org/en/hamiltons-quaternions-and-3d-rotation-with-python/)
+- [How Quaternions Produce 3D Rotation](https://penguinmaths.blogspot.com/2019/06/how-quaternions-produce-3d-rotation.html)
+- [Quaternion Wiki](https://en.wikipedia.org/wiki/Quaternion)
