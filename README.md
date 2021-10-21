@@ -3,9 +3,9 @@ This is part of a math research project on quaternions. It's purpose is to compa
 
 # Index
 1. [Introduction](#introduction)
-2. [The Why](#the_why)
-3. [Understanding the Math](#understanding_the_math)
-4. [Understanding the Code](#understanding_the_code)
+2. [The Why](#the-why)
+3. [Understanding the Math](#understanding-the-math)
+4. [Understanding the Code](#understanding-the-code)
 5. [Resources](#resources)
 
 # Introduction
