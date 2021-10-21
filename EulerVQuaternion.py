@@ -8,7 +8,7 @@ from random import *
 from prettytable import PrettyTable
 from EulerAngle import X, Y, Z
 from Quaternions import euler_to_quaternion
-from Graphs import graphAll, graphAvg
+from Graphs import graph_all_euler_quaternions, graph_avg_euler_quaternions
 
 ITERATIONS = 20
 
@@ -60,8 +60,8 @@ def main():
     dfTable = pd.DataFrame.from_dict(dictionary)                            # Define the dataframes
     dfTable.to_csv("Comparison.csv", index = False, header = True)         # Write dataframes to csv to be saved
 
-    graphAll(time)
-    graphAvg(eTime, qTime)
+    graph_all_euler_quaternions(time)               # Graph data for all iterations
+    graph_avg_euler_quaternions(eTime, qTime)       # Graph data for average of all iterations
 
     plt.show()
 

@@ -14,7 +14,7 @@ def magnitude(vector):
     return magnitude    # Return magnitude value
 
 # Calculate the unit vector
-def unitVector(vector, magnitude):
+def unit_vector(vector, magnitude):
     unitList = []   # Initialize unit vector list
     for i in range (vector.size):   # For all values in array
         unitList.append(vector[i]/magnitude)    # Take value and divide by magnitude and then add to list to calculate unit vector

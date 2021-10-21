@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 
 from random import *
 from prettytable import PrettyTable
-from Rodrigues import rodriguesFormula
-from Quaternions import calcQuaternion, quaternionRotation
-from Graphs import graphAllRodriguesQuaternions, graphAvgRodriguesQuaternions
+from Rodrigues import rodrigues_formula
+from Quaternions import calc_quaternion, quaternion_rotation
+from Graphs import graph_all_rodrigues_quaternions, graph_avg_rodrigues_quaternions
 
 ITERATIONS = 20     #Number of times that operations will run
 
@@ -36,18 +36,18 @@ def main():
 
         startRodrigues = timeit.default_timer()          # Start timer for Rodrigues caluclation run time
 
-        rodrigues = rodriguesFormula(numpy.array(u), numpy.array(v), theta)     # Run Rodrigues' rotation formula
+        rodrigues = rodrigues_formula(numpy.array(u), numpy.array(v), theta)     # Run Rodrigues' rotation formula
 
         stopRodrigues = timeit.default_timer()         # Stop timer for Rodrigues calculation run time
 
         u.insert(0, 0)      # Add scalar of 0
         v.insert(0,0)       # Add scalar of 0
 
-        q = calcQuaternion(numpy.array(u), theta)       # Generate the quaternion
+        q = calc_quaternion(numpy.array(u), theta)       # Generate the quaternion
 
         startQuaternion = timeit.default_timer()        # Start timer for quaternion calculation run time
 
-        quaternion = quaternionRotation(q, numpy.array(v), theta)       # Generate quaternion to describe the rotation
+        quaternion = quaternion_rotation(q, numpy.array(v), theta)       # Generate quaternion to describe the rotation
 
         #quaternion = quaternionRotation(numpy.array(u), numpy.array(v), theta)
 
@@ -76,8 +76,8 @@ def main():
     dfTable = pd.DataFrame.from_dict(dictionary)                                     # Define the dataframes
     dfTable.to_csv("RodriguesVQuaternion.csv", index = False, header = True)         # Write dataframes to csv to be saved
 
-    graphAllRodriguesQuaternions(time)              # Graph data for all iterations
-    graphAvgRodriguesQuaternions(rTime, qTime)      # Graph data for average of all iterations
+    graph_all_rodrigues_quaternions(time)              # Graph data for all iterations
+    graph_avg_rodrigues_quaternions(rTime, qTime)      # Graph data for average of all iterations
 
     plt.show()      # Display graphs
 

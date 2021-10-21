@@ -6,7 +6,7 @@ import numpy as np
 
 # from sympy import *
 from random import *
-from UnitVector import unitVector, magnitude
+from UnitVector import unit_vector, magnitude
 
 # Calculates the conjugate
 def conjugate(q):
@@ -19,8 +19,8 @@ def conjugate(q):
     return q
 
 # Calculates the quaternion
-def calcQuaternion(uVector, theta):
-    u = unitVector(uVector, magnitude(uVector))     # Get the unit vector
+def calc_quaternion(uVector, theta):
+    u = unit_vector(uVector, magnitude(uVector))     # Get the unit vector
 
     #print("Unit Vector: ", u)       # Print the unit vector (debugging)
 
@@ -35,7 +35,7 @@ def calcQuaternion(uVector, theta):
     return (np.array(q))    # Return the quaternion calculated
 
 # Follow the rules to multiply quaternions (general formulation from using relations for i, j, k)
-def quaternionMultiplication(q1, q2):
+def quaternion_multiplication(q1, q2):
     product = []    # Create list to convert to array/vector
     product.append(q1[0]*q2[0] - q1[1]*q2[1] - q1[2]*q2[2] - q1[3]*q2[3])       # s
     product.append(q1[0]*q2[1] + q1[1]*q2[0] + q1[2]*q2[3] - q1[3]*q2[2])       # i
@@ -45,16 +45,16 @@ def quaternionMultiplication(q1, q2):
     return np.array(product)    # Return the quaternion (s, ai, bj, ck)
 
 # Function to caluclate the rotation quaternion given two vectors and an angle
-def quaternionRotationConvert(uVector, vector, theta):
+def quaternion_rotation_convert(uVector, vector, theta):
     q = calcQuaternion(uVector, theta)      # Find the quaternion
     print ("Quaternion: ", q)           # Print the quaternion(debug)
-    rotation = quaternionMultiplication(quaternionMultiplication(q, vector), conjugate(q))  # Caluclate the quaternion that represents the rotation
+    rotation = quaternion_multiplication(quaternion_multiplication(q, vector), conjugate(q))  # Caluclate the quaternion that represents the rotation
 
     return rotation     # Retuarn rotation quaternion
 
 # Function that does not take into account the time to generate the quaternion
-def quaternionRotation(q, v, theta):
-    rotation = quaternionMultiplication(quaternionMultiplication(q, v), conjugate(q))  # Caluclate the quaternion that represents the rotation
+def quaternion_rotation(q, v, theta):
+    rotation = quaternion_multiplication(quaternion_multiplication(q, v), conjugate(q))  # Caluclate the quaternion that represents the rotation
 
     return rotation     # Return rotation quaternion
 

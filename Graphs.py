@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Function to graph all data for Euler and quaternions
-def graphAllEulerQuaternions(time):
+def graph_all_euler_quaternions(time):
 
     labels = ["Iteration", "Euler Time", "Quaternion Time"]     # Creating the labels
 
@@ -22,7 +22,7 @@ def graphAllEulerQuaternions(time):
     return plt.figure(1)
 
 # Function to graph average times for Euler and quaternions
-def graphAvgEulerQuaternions(eTime, qTime):
+def graph_avg_euler_quaternions(eTime, qTime):
     # Getting averages of compute time for euler and quaternion
     eAvg = numpy.average(eTime)
     qAvg = numpy.average(qTime)
@@ -59,7 +59,7 @@ def graphAvgEulerQuaternions(eTime, qTime):
 
 
 # Function to graph all data for Rodrigues and quatenrions
-def graphAllRodriguesQuaternions(time):
+def graph_all_rodrigues_quaternions(time):
 
     labels = ["Iteration", "Rodrigues Time", "Quaternion Time"]     # Creating the labels
 
@@ -78,7 +78,7 @@ def graphAllRodriguesQuaternions(time):
     return plt.figure(1)
 
 # Function to graph average times for Rodrigues and quaternions
-def graphAvgRodriguesQuaternions(rTime, qTime):
+def graph_avg_rodrigues_quaternions(rTime, qTime):
     # Getting averages of compute time for euler and quaternion
     rAvg = numpy.average(rTime)
     qAvg = numpy.average(qTime)
