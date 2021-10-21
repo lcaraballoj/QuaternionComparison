@@ -55,14 +55,14 @@ def main():
 
         final.append(result)            #Append first array to final array
 
-        eQTime = [i, stopEuler - startEuler, stopQuaternion - startQuaternion]
+        eQTime = [i, stopEuler - startEuler, stopQuaternion - startQuaternion]      # List to hold iteration number and run time data
 
-        eTime = [stopEuler - startEuler]
-        qTime = [stopQuaternion - startQuaternion]
+        eTime = [stopEuler - startEuler]                # List to hold run time data for Euler
+        qTime = [stopQuaternion - startQuaternion]      # List to hold run time data for quaternions
 
         time.append(eQTime)
 
-        i += 1
+        i += 1          # Move on to next iteration
 
     print(table)
 

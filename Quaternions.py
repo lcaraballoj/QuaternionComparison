@@ -44,7 +44,7 @@ def quaternionMultiplication(q1, q2):
 
     return np.array(product)    # Return the quaternion (s, ai, bj, ck)
 
-# Function to caluclate the rotarion quaternion given two vectors and an angle
+# Function to caluclate the rotation quaternion given two vectors and an angle
 def quaternionRotationConvert(uVector, vector, theta):
     q = calcQuaternion(uVector, theta)      # Find the quaternion
     print ("Quaternion: ", q)           # Print the quaternion(debug)
@@ -52,10 +52,11 @@ def quaternionRotationConvert(uVector, vector, theta):
 
     return rotation     # Retuarn rotation quaternion
 
+# Function that does not take into account the time to generate the quaternion
 def quaternionRotation(q, v, theta):
     rotation = quaternionMultiplication(quaternionMultiplication(q, v), conjugate(q))  # Caluclate the quaternion that represents the rotation
 
-    return rotation     # Retuarn rotation quaternion
+    return rotation     # Return rotation quaternion
 
 
 # Function to calculate the quaternion given three Euler angles
