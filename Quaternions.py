@@ -1,11 +1,11 @@
 # To calculate a quaternion representing rotation using two different methods.
 
-import numpy as np
 import timeit
-from sympy import sin, cos, pi, sqrt, simplify
+import math
+import numpy as np
 
+# from sympy import *
 from random import *
-
 from UnitVector import unitVector, magnitude
 
 # Calculates the conjugate
@@ -19,17 +19,17 @@ def conjugate(q):
     return q
 
 # Calculates the quaternion
-def quaternion(uVector, theta):
+def calcQuaternion(uVector, theta):
     u = unitVector(uVector, magnitude(uVector))     # Get the unit vector
 
     #print("Unit Vector: ", u)       # Print the unit vector (debugging)
 
     angle = theta/2
 
-    q = [cos(angle)]      # Obtain the scalar part of the quaternion
+    q = [math.cos(angle)]      # Obtain the scalar part of the quaternion
 
     for x in range (1, uVector.size):           # Append values for vector
-        value = uVector[x] * sin(angle)         # For each value in the unit vector multiply it my sin(angle), where angle = (theta/2)
+        value = uVector[x] * math.sin(angle)         # For each value in the unit vector multiply it my sin(angle), where angle = (theta/2)
         q.append(value)                         # Append value to quaternion
 
     return (np.array(q))    # Return the quaternion calculated
@@ -45,28 +45,34 @@ def quaternionMultiplication(q1, q2):
     return np.array(product)    # Return the quaternion (s, ai, bj, ck)
 
 # Function to caluclate the rotarion quaternion given two vectors and an angle
-def quaternionRotation(vector, uVector, theta):
-    q = quaternion(uVector, theta)      # Find the quaternion
+def quaternionRotationConvert(uVector, vector, theta):
+    q = calcQuaternion(uVector, theta)      # Find the quaternion
     print ("Quaternion: ", q)           # Print the quaternion(debug)
     rotation = quaternionMultiplication(quaternionMultiplication(q, vector), conjugate(q))  # Caluclate the quaternion that represents the rotation
 
     return rotation     # Retuarn rotation quaternion
 
+def quaternionRotation(q, v, theta):
+    rotation = quaternionMultiplication(quaternionMultiplication(q, v), conjugate(q))  # Caluclate the quaternion that represents the rotation
+
+    return rotation     # Retuarn rotation quaternion
+
+
 # Function to calculate the quaternion given three Euler angles
 def euler_to_quaternion(phi, theta, psi):
-        qw = cos(phi/2) * cos(theta/2) * cos(psi/2) + sin(phi/2) * sin(theta/2) * sin(psi/2)    # Calculate scalar
-        qx = sin(phi/2) * cos(theta/2) * cos(psi/2) - cos(phi/2) * sin(theta/2) * sin(psi/2)    # Calculate i
-        qy = cos(phi/2) * sin(theta/2) * cos(psi/2) + sin(phi/2) * cos(theta/2) * sin(psi/2)    # Calculate j
-        qz = cos(phi/2) * cos(theta/2) * sin(psi/2) - sin(phi/2) * sin(theta/2) * cos(psi/2)    # Calculate k
+        qw = math.cos(phi/2) * math.cos(theta/2) * math.cos(psi/2) + math.sin(phi/2) * math.sin(theta/2) * math.sin(psi/2)    # Calculate scalar
+        qx = math.sin(phi/2) * math.cos(theta/2) * math.cos(psi/2) - math.cos(phi/2) * math.sin(theta/2) * math.sin(psi/2)    # Calculate i
+        qy = math.cos(phi/2) * math.sin(theta/2) * math.cos(psi/2) + math.sin(phi/2) * math.cos(theta/2) * math.sin(psi/2)    # Calculate j
+        qz = math.cos(phi/2) * math.cos(theta/2) * math.sin(psi/2) - math.sin(phi/2) * math.sin(theta/2) * math.cos(psi/2)    # Calculate k
 
         return [qw, qx, qy, qz] # Combine s, i, j, k to obtain quaternion
 
-def main():
-    theta = pi/3
-    #print("Theta: ", theta)
-    vector = np.array([0, 1, -1, 2])
-    uVector = np.array([0, 0, 1/2, sqrt(3)/2])
-
-    print("Answer: ", simplify(quaternionRotation(vector, uVector, theta)))
-
-main()
+# def main():
+#     theta = pi/3
+#     #print("Theta: ", theta)
+#     vector = np.array([0, 1, -1, 2])
+#     uVector = np.array([0, 0, 1/2, sqrt(3)/2])
+#
+#     print("Answer: ", simplify(quaternionRotation(vector, uVector, theta)))
+#
+# main()

@@ -4,13 +4,14 @@ import timeit
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# from sympy import *
 from random import *
 from prettytable import PrettyTable
 from EulerAngle import X, Y, Z
 from Quaternions import euler_to_quaternion
 from Graphs import graphAll, graphAvg
 
-ITERATIONS = 40
+ITERATIONS = 10
 
 def main():
     final = []
@@ -42,6 +43,7 @@ def main():
         startQuaternion = timeit.default_timer()
 
         quaternion = euler_to_quaternion(phi, theta, psi)
+
         stopQuaternion = timeit.default_timer()             # Stop timer for run time
 
         #print("\n", numpy.round(quaternion, decimals = 2))      # Print rotation matrix
