@@ -16,7 +16,19 @@ This code uses rotation matrices generated from three random Euler angles as wel
 When given a quaternion to rotate we are then going to get a quaternion out, but we can also generate a quaternion to describe rotation using Euler angles as well as vectors. This is base for the formulas used to genearte the rotation quaternion and what is being used to compare the compute times. 
 
 # Understanding the Code
-The code has five main parts: 
+The code has five main parts: `EulerAngle.py`, `Rodrigues.py`, `Quaternions.py`, `EulerVQuaternion.py`, and `RodriguesVQuaternion.py`. There is also a `UnitVector.py` and `Graphs.py`, but these are more suplemental. The real bulk of the computations happens in the aforementioned files. 
+
+- `EulerAngle.py` is used to compute the rotation matrix given three random Euler angles. 
+- `Rodrigues.py` is used to compute Rodrigue's rotation formula given two random vectors, with one being turned into a unit vector with `UnitVector.py` and a random angle. 
+- `Quaternions.py` is used for all the quaternion computations.
+  - This includes:
+    1. Finding the conjugate: `conjugate()`
+    2. Generating a quaternion given a vector and angle: `calc_quaternion()`
+    3. Multiplying quaternions following the i, j, k relations needed: `quaternion_multiplication()`
+    4. Calculating the quaternion to represent a rotation with generating the quaternion: `quaternion_rotation_convert()`
+    5. Calculiting the quaternion to represent a rotation without generating the quaternion: `quaternion_rotation()`
+    6. Calculating the quaternion to reprsent a rotation using three Euler angles: `euler_to_quaternion()`
+ 
 
 # The Why
 The goal is prove that quaternions are a more efficient way to compute the rotation of 3D objects. It is a supplementary addition to a research paper on quaternions and a way to collect original data. Quaternions are widely used and are preferred over Euler angles becuase of the speed of computing them, the size, only four scalars vs. the nine in matrix multiplication, and the fact that using quaternions does not result in something called gimbal lock. To have hard data that shows the compute time of quaternions is superior is beneficial for visualizing why we would want to go through the trouble of understanding the complexities of quaternions. 
