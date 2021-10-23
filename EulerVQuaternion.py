@@ -22,14 +22,15 @@ def main():
     i = 0       # Initialize iteration
 
     while i<=ITERATIONS:                             # Loop (depends on ITERATIONS constant at top)
-        startEuler = timeit.default_timer()          # Start timer for euler caluclation run time
-
         #Generate random angles
         phi = math.pi / randint(1, 6)
         theta = math.pi / randint(1, 6)
         psi = math.pi / randint(1, 6)
 
-        euler = X(phi) * Y(theta) * Z(theta)       # Calculate rotation matrix
+        startEuler = timeit.default_timer()          # Start timer for euler caluclation run time
+
+        euler = X(phi) * Y(theta) * Z(theta)       # Calculate rotation
+
         stopEuler = timeit.default_timer()         # Stop timer for euler calculation run time
 
         startQuaternion = timeit.default_timer()
