@@ -51,7 +51,7 @@ def graph_avg_euler_quaternions(eTime, qTime):
     ax.set_ylabel("Computation Time")       # Labels for y-axis
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels)
-    ax.set_title("Average Compute Time: Rotation Matrix vs. Quaternions")      # Title
+    ax.set_title("Compute Time: Rotation Matrix vs. Quaternions")      # Title
     ax.yaxis.grid(True)
 
     # Return the figure
@@ -107,7 +107,7 @@ def graph_avg_rodrigues_quaternions(rTime, qTime):
     ax.set_ylabel("Computation Time")       # Label for y-axis
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels)
-    ax.set_title("Average Compute Time: Rodrigues vs. Quaternions")  # Title
+    ax.set_title("Compute Time: Rodrigues vs. Quaternions")  # Title
     ax.yaxis.grid(True)
 
     # Return the figure

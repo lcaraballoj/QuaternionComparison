@@ -15,7 +15,7 @@ def conjugate(q):
     q[2] = -q[2]
     q[3] = -q[3]
 
-    print ("Conjugate: ", q)
+    # print ("Conjugate: ", q)
     return q
 
 # Calculates the quaternion

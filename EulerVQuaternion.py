@@ -17,7 +17,7 @@ def main():
     time = []
 
     headers = ["phi", "theta", "psi", "Euler Rotation Matrix", "Time for Euler", "Time for Quaternion", "Quaternion Result"]    # Headers for table
-    table = PrettyTable(headers)        # Genearte table
+    table = PrettyTable(headers)        # Generate table
 
     i = 0       # Initialize iteration
 
@@ -27,7 +27,7 @@ def main():
         theta = math.pi / randint(1, 6)
         psi = math.pi / randint(1, 6)
 
-        startEuler = timeit.default_timer()          # Start timer for euler caluclation run time
+        startEuler = timeit.default_timer()        # Start timer for Euler calculation run time
 
         euler = X(phi) * Y(theta) * Z(theta)       # Calculate rotation
 

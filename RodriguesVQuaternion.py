@@ -41,7 +41,7 @@ def main():
         stopRodrigues = timeit.default_timer()         # Stop timer for Rodrigues calculation run time
 
         u.insert(0, 0)      # Add scalar of 0
-        v.insert(0,0)       # Add scalar of 0
+        v.insert(0, 0)       # Add scalar of 0
 
         q = calc_quaternion(numpy.array(u), theta)       # Generate the quaternion
 
@@ -54,7 +54,7 @@ def main():
         stopQuaternion = timeit.default_timer()             # Stop timer for quaternion calculation run time
 
         # Add value to table
-        add = table.add_row([theta, rodrigues, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, quaternion])  # Add information to table
+        add = table.add_row([theta, rodrigues, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, numpy.round(quaternion, decimals  = 2)])
 
         result = [theta, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, quaternion]              # Add information to first array
 
