@@ -36,7 +36,7 @@ class EllipseExample(Scene):
         arrowDir8 = arrow_on_path(ellipse_3, 0.64, PI/2)
 
         textQV = MathTex(r"qv", font_size = 80).move_to(ellipse_1).shift(DOWN*3, RIGHT*.4)
-        textVQ = MathTex(r"qv^*", font_size = 80).shift(DOWN*3).shift(RIGHT*.4)
+        textVQ = MathTex(r"vq^*", font_size = 80).shift(DOWN*3).shift(RIGHT*.4)
         textQVQ = MathTex(r"qvq^*", font_size = 80).move_to(ellipse_3).shift(DOWN*3, RIGHT*.4)
 
         self.add(ellipse_1, ellipse_2, ellipse_3, arrow_1, arrow_2, arrowDir1, arrowDir2, arrowDir3, arrowDir4, arrowDir5, arrowDir6, arrowDir7, arrowDir8, textQV, textVQ, textQVQ)
