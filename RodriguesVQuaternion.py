@@ -24,7 +24,7 @@ def main():
 
     while i<=ITERATIONS:    # Loop (depends on ITERATIONS constant at top)
         # Generate random angles
-        theta = math.pi / 6      # Random angle
+        theta = math.pi / randint(1, 6)      # Random angle
 
         # Generate vectors
         # v = [1, -1, 2]
@@ -52,11 +52,12 @@ def main():
         #quaternion = quaternionRotation(numpy.array(u), numpy.array(v), theta)
 
         stopQuaternion = timeit.default_timer()             # Stop timer for quaternion calculation run time
+        print (stopQuaternion-startQuaternion)
 
         # Add value to table
-        add = table.add_row([theta, rodrigues, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, numpy.round(quaternion, decimals  = 2)])
+        add = table.add_row([theta, rodrigues, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, quaternion])
 
-        result = [theta, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, quaternion]              # Add information to first array
+        result = [theta, rodrigues, stopRodrigues - startRodrigues, stopQuaternion - startQuaternion, quaternion]              # Add information to first array
 
         final.append(result)            #Append first array to final array
 

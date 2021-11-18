@@ -27,8 +27,8 @@ class EllipseExample(Scene):
         arrowDir1 = arrow_on_path(ellipse_1, 0.16, PI/2)
         arrowDir2 = arrow_on_path(ellipse_1, 0.64, PI/2)
 
-        arrowDir3 = arrow_on_path(ellipse_2, 0.16, PI/6)
-        arrowDir4 = arrow_on_path(ellipse_2, 0.64, PI/6)
+        arrowDir3 = arrow_on_path(ellipse_2, 0.16, PI/2)
+        arrowDir4 = arrow_on_path(ellipse_2, 0.64, PI/2)
 
         arrowDir5 = arrow_on_path(ellipse_3, 0.18, PI/2)
         arrowDir6 = arrow_on_path(ellipse_3, 0.16, PI/2)
